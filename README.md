@@ -5,3 +5,6 @@ Hungarian Dusza Árpád IT Competition.
 Attila Bertók:      [@bertokattila](https://github.com/bertokattila)  
 Koppány Balogh:     [@balogh3](https://github.com/balogh3)  
 Zalán Bálint Lévai: [@RePixelated](https://github.com/RePixelated)
+
+# Projects
+2015 - Competition Scoring (WIP)
