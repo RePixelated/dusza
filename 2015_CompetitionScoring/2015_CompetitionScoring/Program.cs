@@ -10,9 +10,6 @@ namespace _2015_CompetitionScoring
     {
         static void Main(string[] args)
         {
-            Eredmeny eredmeny = new Eredmeny();
-
-            Console.ReadKey();
         }
     }
 }
