@@ -36,14 +36,15 @@ namespace _2015_CompetitionScoring
         int verseny;
         string csapat;
         int nevIdő;
-        int hónap;
-        int nap;
         string iskola;
         string megye;
         string diák;
         List<string> diákok = new List<string>();
         int évfolyam;
         string tanár;
+
+        enum Státusz { Érvényes, Késett, RosszVerseny };
+        Státusz érvényesség = new Státusz();
 
         public Nevezés(string forrás)
         {
@@ -56,13 +57,10 @@ namespace _2015_CompetitionScoring
             csapat = narancs[1];
 
             /// Nevezés ideje
-            hónap = Convert.ToInt32(narancs[2].Substring(0, 2));
-            nap = Convert.ToInt32(narancs[2].Substring(2, 2));
+            int hónap = Convert.ToInt32(narancs[2].Substring(0, 2));
+            int nap = Convert.ToInt32(narancs[2].Substring(2, 2));
 
-            nevIdő = 0;
-            for (int i = 1; i <= hónap; i++)
-                nevIdő += i % 2 == 0 ? (i == 2 ? 28 : 30) : 31;
-            nevIdő += nap;
+            nevIdő = Dátum(hónap, nap);
 
             /// Iskola neve
             iskola = narancs[3];
@@ -83,6 +81,51 @@ namespace _2015_CompetitionScoring
 
             /// Felkészítő tanár
             tanár = verseny == 1 ? narancs[9] : narancs[7];
+
+
+            /// Hiba ellenőrzés
+            if ((verseny == 1 && narancs.Count() != 7) ||
+                (verseny == 4 && narancs.Count() != 9))
+            {
+                érvényesség = Státusz.RosszVerseny;
+            }
+            else if ((verseny == 1 && nevIdő > Dátum(10, 15)) ||
+                    (verseny == 4 && nevIdő > Dátum(10, 10)))
+            {
+                érvényesség = Státusz.Késett;
+            }
+            else
+            {
+                érvényesség = Státusz.RosszVerseny;
+            }
+        }
+
+        void Hiba()
+        {
+            StreamWriter cél = new StreamWriter("ervtelen.txt", true);
+
+            if (érvényesség == Státusz.Késett)
+            {
+                cél.WriteLine("{0};{1};egy versenyzo kell", verseny, iskola);
+            }
+            else if (érvényesség == Státusz.RosszVerseny)
+            {
+                if (verseny == 1)
+                    cél.WriteLine("{0};{1};harom versenyzo kell", verseny, iskola);
+            }
+
+            cél.Close();
+        }
+
+        int Dátum(int hónap, int nap)
+        {
+            int dátum = 0;
+
+            for (int i = 1; i <= hónap; i++)
+                dátum += i % 2 == 0 ? (i == 2 ? 28 : 30) : 31;
+            dátum += nap;
+
+            return dátum;
         }
 
         public int Évfolyam() { return évfolyam; }
