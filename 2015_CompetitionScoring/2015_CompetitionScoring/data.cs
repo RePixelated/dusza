@@ -7,6 +7,11 @@ using System.IO;
 
 namespace _2015_CompetitionScoring
 {
+    class Adatok
+    {
+        public static Nevezések nevezések = new Nevezések();
+    }
+
     class Nevezések
     {
         List<Nevezés> nevezések = new List<Nevezés>();
@@ -22,6 +27,8 @@ namespace _2015_CompetitionScoring
                 i++;
             }
         }
+
+        public Nevezés Nevezés(int i) { return nevezések[i]; }
     }
 
     class Nevezés
@@ -76,45 +83,43 @@ namespace _2015_CompetitionScoring
 
             /// Felkészítő tanár
             tanár = verseny == 1 ? narancs[9] : narancs[7];
+        }
+
+        public int Évfolyam() { return évfolyam; }
     }
-    }
-    class Eredmeny
+
+    class Eredmény
     {
-        public int programozóSzám;
-        public int robotSzam;
-        public string[,] csapatnev;
-        public int[,] pontszam;
-        public Eredmeny()
+        int progSzám;
+        int robotSzám;
+
+        List<Csapat> csapatok = new List<Csapat>();
+
+        public Eredmény()
         {
-            StreamReader eredmény = new StreamReader("eredmeny.txt");
+            StreamReader forrás = new StreamReader("eredmeny.txt");
 
-            programozóSzám = Convert.ToInt32(eredmény.ReadLine());
-            robotSzam = Convert.ToInt32(eredmény.ReadLine());
+            progSzám = Convert.ToInt32(forrás.ReadLine());
+            robotSzám = Convert.ToInt32(forrás.ReadLine());
 
-            csapatnev = new string [programozóSzám + robotSzam, 2]; // [x, 0] -> programozoadatok, [x, 1] -> robotadatok
-            pontszam = new int [programozóSzám + robotSzam, 2]; // [x, 0] -> programozoadatok, [x, 1] -> robotadatok
-
-            string[] konténer = new string[programozóSzám+robotSzam]; //ideiglenes változó, ezt még "splitelni" kell majd
-            for (int i = 0; i < programozóSzám+robotSzam; i++)
-            {
-                konténer[i] = eredmény.ReadLine();
-            }
-
-
-            for (int i = 0; i < programozóSzám; i++) // programoró kategóriához ciklus
-            {
-                string[] ketteskonténer = konténer[i].Split(';');
-                csapatnev[i, 0] = ketteskonténer[0];
-                pontszam[i, 0] = Convert.ToInt32(ketteskonténer[1]);
-            }
-            for (int i = 0; i < robotSzam; i++) // robotika ketegóriához ciklus
-            {
-                string[] ketteskonténer = konténer[i + programozóSzám].Split(';');
-                csapatnev[i, 1] = ketteskonténer[0];
-                pontszam[i, 1] = Convert.ToInt32(ketteskonténer[1]);
-            }
-           
+            csapatok.Add(new Csapat(forrás.ReadLine()));
         }
     }
 
+    class Csapat
+    {
+        string név;
+        int pontszám;
+
+        public Csapat(string forrás)
+        {
+            string[] körte = forrás.Split(';');
+
+            /// Név
+            név = körte[0];
+
+            /// Pontszám
+            pontszám = Convert.ToInt32(körte[1]);
+        }
+    }
 }
