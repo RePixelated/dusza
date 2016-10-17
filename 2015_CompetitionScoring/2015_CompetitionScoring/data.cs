@@ -106,12 +106,14 @@ namespace _2015_CompetitionScoring
 
             if (érvényesség == Státusz.Késett)
             {
-                cél.WriteLine("{0};{1};egy versenyzo kell", verseny, iskola);
+                cél.WriteLine("{0};{1};{2};hatarido", verseny, csapat, iskola);
             }
             else if (érvényesség == Státusz.RosszVerseny)
             {
                 if (verseny == 1)
-                    cél.WriteLine("{0};{1};harom versenyzo kell", verseny, iskola);
+                    cél.WriteLine("{0};{1};{2};harom versenyzo kell", verseny, csapat, iskola);
+                if (verseny == 4)
+                    cél.WriteLine("{0};{1};{2};egy versenyzo kell", verseny, csapat, iskola);
             }
 
             cél.Close();
