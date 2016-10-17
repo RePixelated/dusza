@@ -1,0 +1,9 @@
+1;boldogok;1001;Boldog Iskola;Pest megye;Szonja;11;Lilien;11;Simon;10;Gipsz Jakab
+1;aranyosak;2011;Aranyos Iskola;Pest megye;Ádám;11;Róbert;11;Vilmos;10;Máté
+1;okosak;911;Okos Iskola;Pest megye;Jázmin;10;Rómeó;11;Bertalan;10;Marcell
+4;szepek;0;Szep Iskola;Vas Megye;Zoé;11;Júlia;11;Donát;11;Dávid
+1;butak;1010;Buta Iskola;Vas Megye;Emma;10;Janka;10;Viktor;11;Dániel
+4;szerenyek;1100;Szereny Iskola;Vas Megye;Dorina;11;Adél;11;Brájen;11;Kristóf
+100;csunyak;1002;Csunya Iskola;Borsod-Abaúj-Zemplén megye;Benedek;10;Márton;10;Sámuel;11;Péter
+2;jok;1030;Jo Iskola;Somogy megye;Vivien;10;Roland;10;Szebasztián;11;Gergő
+0;rosszak;1011;Rossz Iskola;Fejér megye;Mira;10;Viktor;10;Károly;11;Olivér                                       
