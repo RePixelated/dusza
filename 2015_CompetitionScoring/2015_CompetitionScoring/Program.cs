@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace _2015_CompetitionScoring
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-        }
-    }
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			Console.WriteLine(Adatok.nevezések);
+		}
+	}
 }
