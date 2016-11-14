@@ -1,0 +1,8 @@
+4
+2
+ugyesek;101
+cs-ok;100
+kobrak;87
+globalisak;92
+villaskulcs;85
+muhelyesek;99
