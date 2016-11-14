@@ -491,7 +491,6 @@ namespace _2015_CompetitionScoring
 		int iskolaID;
 		int tanárID;
 
-
 		public Csapat(int verseny, string név, int nevIdő, int iskolaID, string[] versenyzőAdatok, int tanárID)
 		{
 			// Általános jellemzók
